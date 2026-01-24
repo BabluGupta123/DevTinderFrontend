@@ -1,11 +1,17 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Body from "./components/Body";
 
 const App = () => {
   return (
-    <div className="bg-white text-red-500">
-      <Navbar></Navbar>
-    </div>
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/" element={<Body></Body>}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
