@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState();
 
   const handleLogin = async () => {
     try {
@@ -21,7 +22,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {
-      console.log(error.response?.data || error.message);
+      setError(error.response?.data || error.message);
     }
   };
 
@@ -47,6 +48,7 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <p className="text-red-500">{error}</p>
 
         <button className="btn btn-neutral mt-4" onClick={handleLogin}>
           Login
