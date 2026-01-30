@@ -22,7 +22,6 @@ const Requests = () => {
     }
   };
 
-  // accept / reject request
   const reviewRequest = async (status, fromUserId) => {
     try {
       await axios.post(
@@ -44,7 +43,12 @@ const Requests = () => {
   }, []);
 
   if (!Array.isArray(requests)) return null;
-  if (requests.length === 0) return <div>No pending requests</div>;
+  if (requests.length === 0)
+    return (
+      <div className="flex justify-center mt-10 font-bold text-2xl">
+        No pending requests
+      </div>
+    );
 
   return (
     <div className="flex flex-wrap gap-4 p-4">

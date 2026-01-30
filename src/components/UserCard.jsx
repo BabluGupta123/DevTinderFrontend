@@ -1,6 +1,6 @@
 import React from "react";
 
-export const UserCard = ({ user }) => {
+export const UserCard = ({ user, onInterested, onIgnore }) => {
   if (!user) return null;
 
   return (
@@ -9,7 +9,7 @@ export const UserCard = ({ user }) => {
         <img
           className="mt-5"
           src={user.photoUrl || "https://via.placeholder.com/400"}
-          alt="Photo"
+          alt="Profile"
         />
       </figure>
 
@@ -19,14 +19,19 @@ export const UserCard = ({ user }) => {
         </h2>
 
         <p>
-          {user.age} {user.gender}
+          {user.age} • {user.gender}
         </p>
 
         <p>{user.about}</p>
 
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Interested</button>
-          <button className="btn btn-secondary">Ignore</button>
+          <button className="btn btn-primary" onClick={onInterested}>
+            Interested
+          </button>
+
+          <button className="btn btn-secondary" onClick={onIgnore}>
+            Ignore
+          </button>
         </div>
       </div>
     </div>
