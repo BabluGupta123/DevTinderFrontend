@@ -30,38 +30,43 @@ const Connections = () => {
   if (connections.length === 0) return <div>No connections found</div>;
 
   return (
-    <div className="flex flex-wrap  p-4 flex-col  ">
+    <div className="max-w-4xl mx-auto px-4 py-8 space-y-4">
       {connections.map((user) => (
         <div
           key={user._id}
-          className="card w-full  bg-base-100 shadow flex flex-row justify-between h-40 border border-gray-500"
+          className="card bg-base-200 shadow-md border border-base-300"
         >
-          <div className="card-body flex flex-row justify-center items-center">
-            <div className="rounded-full bg-red h-full">
-              <img
-                src={user.photoUrl}
-                alt=""
-                className="p-2 h-30 w-30 rounded-[50%] my-auto"
-              />
-            </div>
+          <div className="card-body flex flex-row items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="avatar">
+                <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img
+                    src={user.photoUrl || "https://via.placeholder.com/150"}
+                    alt="profile"
+                  />
+                </div>
+              </div>
 
-            <div className="flex items-center flex-col justify-center">
-              <h2 className="card-title">
-                {user.firstName} {user.lastName}
-              </h2>
-              <p>{user.about}</p>
+              <div className="flex flex-col justify-center">
+                <h2 className="text-lg font-semibold leading-tight">
+                  {user.firstName} {user.lastName}
+                </h2>
 
-              <div className="flex gap-2 text-gray-300">
-                <p>{user.age}</p>
-                <p>{user.gender}</p>
+                <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
+                  <span>{user.age}</span>
+                  <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+                  <span className="capitalize">{user.gender}</span>
+                </div>
+
+                <p className="text-sm text-gray-400 mt-2 line-clamp-2">
+                  {user.about}
+                </p>
               </div>
             </div>
-          </div>
 
-          <div className="w-[50%] flex items-center pl-20">
-            <button className=" btn btn-primary p-4 rounded-2xl">
-              Message
-            </button>
+            <div className="flex items-center">
+              <button className="btn btn-primary btn-sm">Message</button>
+            </div>
           </div>
         </div>
       ))}

@@ -62,31 +62,37 @@ const EditProfile = () => {
         <input
           className="input"
           value={firstName}
+          placeholder="First Name"
           onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           className="input"
           value={lastName}
+          placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
         />
         <input
           className="input"
           value={photoUrl}
+          placeholder="Profile Image"
           onChange={(e) => setPhotoUrl(e.target.value)}
         />
         <input
           className="input"
           value={age}
+          placeholder="Age"
           onChange={(e) => setAge(e.target.value)}
         />
         <input
           className="input"
           value={gender}
+          placeholder="male, female"
           onChange={(e) => setGender(e.target.value)}
         />
         <input
           className="input"
           value={about}
+          placeholder="About"
           onChange={(e) => setAbout(e.target.value)}
         />
 

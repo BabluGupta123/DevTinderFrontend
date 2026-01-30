@@ -4,33 +4,37 @@ export const UserCard = ({ user, onInterested, onIgnore }) => {
   if (!user) return null;
 
   return (
-    <div className="card bg-base-300 w-96 shadow-sm">
-      <figure>
+    <div className="card bg-base-200 w-96 shadow-xl overflow-hidden">
+      <figure className="h-72 w-full bg-base-300 overflow-hidden">
         <img
-          className="mt-5"
           src={user.photoUrl || "https://via.placeholder.com/400"}
           alt="Profile"
+          className="w-full h-full object-cover object-top"
+          onError={(e) => (e.target.src = "https://via.placeholder.com/400")}
         />
       </figure>
 
       <div className="card-body">
-        <h2 className="card-title">
+        <h2 className="card-title text-xl">
           {user.firstName} {user.lastName}
         </h2>
 
-        <p>
-          {user.age} • {user.gender}
+        <p className="text-sm text-gray-500">
+          {user.age} • <span className="capitalize">{user.gender}</span>
         </p>
 
-        <p>{user.about}</p>
+        <p className="text-sm text-gray-400 line-clamp-3">{user.about}</p>
 
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={onInterested}>
-            Interested
+        <div className="card-actions justify-between mt-4">
+          <button
+            className="btn btn-outline btn-error flex-1 mr-2"
+            onClick={onIgnore}
+          >
+            Ignore
           </button>
 
-          <button className="btn btn-secondary" onClick={onIgnore}>
-            Ignore
+          <button className="btn btn-primary flex-1" onClick={onInterested}>
+            Interested
           </button>
         </div>
       </div>
